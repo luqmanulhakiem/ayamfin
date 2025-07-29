@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->enum('type', ['pemasukan', 'pengeluaran']);
+            $table->enum('type_pengeluaran', ['hpp', 'operasional'])->nullable();
             $table->text('description')->nullable();
             $table->timestamps();
         });

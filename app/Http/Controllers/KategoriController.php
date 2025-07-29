@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\KategoriRequest;
 use App\Models\Kategori;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,10 @@ class KategoriController extends Controller
      */
     public function index()
     {
-        return view('src.pages.kategori.index');
+        // Mengambil semua data kategori berdasarkan urutan tipenya
+        $data = Kategori::get()->sortBy('type');
+        // Menampilkan halaman kategori bersamaan dengan data kategori
+        return view('src.pages.kategori.index', compact('data'));
     }
 
     /**
@@ -20,15 +24,23 @@ class KategoriController extends Controller
      */
     public function create()
     {
-        //
+        // menampilkan halaman pembuatan kategori
+        return view('src.pages.kategori.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(KategoriRequest $request)
     {
-        //
+        // Meminta Request ke FrontEnd
+        $data = $request->validated();
+
+        // Menyimpan Data
+        Kategori::create($data);
+
+        // Kembali ke halaman kategori
+        return redirect()->route("kategori");
     }
 
     /**

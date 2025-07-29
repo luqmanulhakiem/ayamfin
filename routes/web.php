@@ -45,6 +45,8 @@ Route::group(['middleware' => ['auth']], function () {
             Route::controller(KategoriController::class)->group(function () {
                 // Halaman Index Kategori
                 Route::get("kategori", 'index')->name('kategori');
+                Route::get("kategori/tambah", 'create')->name('kategori.create');
+                Route::post("kategori/store", 'store')->name('kategori.store');
             });
         });
     });
