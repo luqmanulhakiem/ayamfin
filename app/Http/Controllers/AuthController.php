@@ -28,7 +28,7 @@ class AuthController extends Controller
                 // jika password benar maka loginkan akun
                 Auth::attempt(['email' => $data['email'], 'password' => $data['password']]);
                 // Kembalikan tampilan ke halaman dashboard
-                return view('welcome');
+                return redirect()->route('dashboard');
             } else {
                 // Jika password salah
                 return redirect()->back()->withInput()->withErrors(['errors' => 'Password salah']);

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -36,8 +37,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/logout-request', [AuthController::class, 'logout'])->name('logout.request');
 
     Route::prefix('dashboard')->group(function () {
-        Route::get('', function () {
-            return view('welcome');
-        })->name('dashboard');
+        Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     });
 });
