@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\KategoriController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -35,8 +36,16 @@ Route::group(['middleware' => ['guest']], function () {
 Route::group(['middleware' => ['auth']], function () {
     // Logout
     Route::get('/logout-request', [AuthController::class, 'logout'])->name('logout.request');
-
+    // Dashboard
     Route::prefix('dashboard')->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+        // Management
+        Route::prefix('management')->group(function () {
+            // Kategori Controller
+            Route::controller(KategoriController::class)->group(function () {
+                // Halaman Index Kategori
+                Route::get("kategori", 'index')->name('kategori');
+            });
+        });
     });
 });
