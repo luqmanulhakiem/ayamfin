@@ -14,7 +14,9 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->use([
             \Illuminate\Http\Middleware\HandleCors::class
         ]);
-        // $middleware->append(\Illuminate\Http\Middleware\HandleCors::class);
+        $middleware->web(append: [
+            \RealRashid\SweetAlert\ToSweetAlert::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

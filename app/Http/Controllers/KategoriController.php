@@ -40,7 +40,7 @@ class KategoriController extends Controller
         Kategori::create($data);
 
         // Kembali ke halaman kategori
-        return redirect()->route("kategori");
+        return redirect()->route("kategori")->withSuccess('Berhasil Membuat Kategori');
     }
 
     /**
