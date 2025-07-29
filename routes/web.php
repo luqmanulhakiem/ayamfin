@@ -47,6 +47,9 @@ Route::group(['middleware' => ['auth']], function () {
                 Route::get("kategori", 'index')->name('kategori');
                 Route::get("kategori/tambah", 'create')->name('kategori.create');
                 Route::post("kategori/store", 'store')->name('kategori.store');
+                Route::get("kategori/edit/{id}", 'edit')->name('kategori.edit');
+                Route::post("kategori/update/{id}", 'update')->name('kategori.update');
+                Route::get("kategori/update/{id}/status", 'updateStatus')->name('kategori.update.status');
             });
         });
     });

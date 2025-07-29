@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->enum('type', ['pemasukan', 'pengeluaran']);
             $table->enum('type_pengeluaran', ['hpp', 'operasional'])->nullable();
-            $table->text('description')->nullable();
+            $table->enum('status', ['active', 'disable'])->default('active');
             $table->timestamps();
         });
     }

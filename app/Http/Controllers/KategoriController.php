@@ -46,25 +46,47 @@ class KategoriController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Kategori $kategori)
+    public function updateStatus(String $id)
     {
-        //
+        // Mencari Kategori Berdasarkan id
+        $data = Kategori::findorfail($id);
+        if ($data->status == 'active') {
+            $data->update(['status' => 'disable']);
+            return redirect()->route("kategori")->withSuccess('Berhasil Mematikan Kategori');
+        } else {
+            $data->update(['status' => 'active']);
+            return redirect()->route("kategori")->withSuccess('Berhasil Menyalakan Kategori');
+        }
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Kategori $kategori)
+    public function edit(String $id)
     {
-        //
+        // Mencari Kategori Berdasarkan id
+        $data = Kategori::findorfail($id);
+
+        // Kembali ke halaman kategori
+        return view('src.pages.kategori.edit', compact('data'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Kategori $kategori)
+    public function update(KategoriRequest $request, String $id)
     {
-        //
+        // Meminta Request ke FrontEnd
+        $validate = $request->validated();
+
+        // Mencari Kategori Berdasarkan id
+        $data = Kategori::findorfail($id);
+
+        // Mengupdate data
+        $data->update($validate);
+
+        // Kembali ke halaman kategori
+        return redirect()->route("kategori")->withSuccess('Berhasil Mengupdate Kategori');
     }
 
     /**
