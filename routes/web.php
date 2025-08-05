@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\KategoriController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -50,6 +51,17 @@ Route::group(['middleware' => ['auth']], function () {
                 Route::get("kategori/edit/{id}", 'edit')->name('kategori.edit');
                 Route::post("kategori/update/{id}", 'update')->name('kategori.update');
                 Route::get("kategori/update/{id}/status", 'updateStatus')->name('kategori.update.status');
+            });
+
+            // Karyawan Controller
+            Route::controller(KaryawanController::class)->group(function () {
+                // Halaman Index Karyawan
+                Route::get("karyawan", 'index')->name('karyawan');
+                Route::get("karyawan/tambah", 'create')->name('karyawan.create');
+                Route::post("karyawan/store", 'store')->name('karyawan.store');
+                Route::get("karyawan/edit/{karyawan}", 'edit')->name('karyawan.edit');
+                Route::post("karyawan/update/{karyawan}", 'update')->name('karyawan.update');
+                Route::delete("karyawan/destroy/{karyawan}", 'destroy')->name('karyawan.destroy');
             });
         });
     });
