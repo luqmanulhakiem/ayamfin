@@ -72,6 +72,7 @@ Route::group(['middleware' => ['auth']], function () {
             Route::controller(TransaksiController::class)->group(function () {
                 // Halaman Index Transaksi (Pencatatan Pemasukan)
                 Route::get("pemasukan", 'pemasukan')->name('pencatatan.pemasukan');
+                Route::get("pengeluaran", 'pengeluaran')->name('pencatatan.pengeluaran');
                 Route::post("pencatatan/store/{type}", 'store')->name('pencatatan.store');
 
                 // Route::get("karyawan/tambah", 'create')->name('karyawan.create');

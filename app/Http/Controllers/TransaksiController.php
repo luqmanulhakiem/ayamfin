@@ -37,13 +37,13 @@ class TransaksiController extends Controller
         Transaksi::create([
             'user_id' => Auth::user()->id,
             'category_id' => $form['category_id'],
-            'karyawan_id' =>   $type != "pemasukan" ? $form['karyawan_id'] :  null,
+            // 'karyawan_id' =>   $type != "pemasukan" ? $form['karyawan_id'] :  null,
             'amount' => $form['amount'],
             'date_transaction' => Carbon::now(),
         ]);
 
         if ($type != "pemasukan") {
-            return response()->json(['success' => 'true'], 200);
+            return redirect()->route("pencatatan.pengeluaran")->withSuccess('Berhasil Mencatat Pengeluaran');
         } else {
             return redirect()->route("pencatatan.pemasukan")->withSuccess('Berhasil Mencatat Pemasukan');
         }
@@ -64,6 +64,12 @@ class TransaksiController extends Controller
     {
         $category = Kategori::where('type', 'pemasukan')->where('type_pengeluaran', null)->where('status', 'active')->get();
         return view('src.pages.transaksi.pemasukan', compact('category'));
+    }
+
+    public function pengeluaran()
+    {
+        $category = Kategori::where('type', 'pengeluaran')->whereNot('type_pengeluaran', null)->where('status', 'active')->get();
+        return view('src.pages.transaksi.pengeluaran', compact('category'));
     }
 
     /**
