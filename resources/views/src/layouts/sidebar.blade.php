@@ -44,7 +44,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link  {{ Request::is('dashboard/pencatatan/pemasukan*') ? 'active' : '' }}"
-                    href="{{ route('kategori') }}">
+                    href="{{ route('pencatatan.pemasukan') }}">
                     <div
                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="16px" height="16px" xmlns="http://www.w3.org/2000/svg"

@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\TransaksiController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -62,6 +63,22 @@ Route::group(['middleware' => ['auth']], function () {
                 Route::get("karyawan/edit/{karyawan}", 'edit')->name('karyawan.edit');
                 Route::post("karyawan/update/{karyawan}", 'update')->name('karyawan.update');
                 Route::delete("karyawan/destroy/{karyawan}", 'destroy')->name('karyawan.destroy');
+            });
+        });
+
+        // Pencatatan
+        Route::prefix('pencatatan')->group(function () {
+            // Transaksi Controller (Pencatatan Pemasukan)
+            Route::controller(TransaksiController::class)->group(function () {
+                // Halaman Index Transaksi (Pencatatan Pemasukan)
+                Route::get("pemasukan", 'pemasukan')->name('pencatatan.pemasukan');
+                Route::post("pencatatan/store/{type}", 'store')->name('pencatatan.store');
+
+                // Route::get("karyawan/tambah", 'create')->name('karyawan.create');
+                // Route::post("karyawan/store", 'store')->name('karyawan.store');
+                // Route::get("karyawan/edit/{karyawan}", 'edit')->name('karyawan.edit');
+                // Route::post("karyawan/update/{karyawan}", 'update')->name('karyawan.update');
+                // Route::delete("karyawan/destroy/{karyawan}", 'destroy')->name('karyawan.destroy');
             });
         });
     });
