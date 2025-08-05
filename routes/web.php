@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\Laporan\ArusKasController;
 use App\Http\Controllers\TransaksiController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -81,6 +82,10 @@ Route::group(['middleware' => ['auth']], function () {
                 // Route::post("karyawan/update/{karyawan}", 'update')->name('karyawan.update');
                 // Route::delete("karyawan/destroy/{karyawan}", 'destroy')->name('karyawan.destroy');
             });
+        });
+
+        Route::prefix('laporan')->group(function () {
+            Route::get("arus-kas", [ArusKasController::class, 'index'])->name('arus-kas');
         });
     });
 });

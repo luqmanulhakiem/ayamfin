@@ -15,7 +15,6 @@ class KategoriSeeder extends Seeder
     {
         $pemasukan = [
             ["name" => "Penjualan Ayam", "type" => "pemasukan"],
-            ["name" => "Penjualan Limbah/Pupuk", "type" => "pemasukan"],
             ["name" => "Lain-lain Pemasukan", "type" => "pemasukan"],
         ];
         $pengeluaran = [
@@ -27,8 +26,6 @@ class KategoriSeeder extends Seeder
             ["name" => "Transportasi", "type" => "pengeluaran", "type_pengeluaran" => "operasional"],
             ["name" => "Perbaikan & Pemeliharaan", "type" => "pengeluaran", "type_pengeluaran" => "operasional"],
             ["name" => "Administrasi & Umum", "type" => "pengeluaran", "type_pengeluaran" => "operasional"],
-            // ["name" => "Penyusutan Aset", "type" => "pengeluaran", "type_pengeluaran" => "operasional"],
-            // ["name" => "Investasi Aset", "type" => "pembelian_aset", "type_pembelian_aset" => "NULL"]
         ];
 
         Kategori::insert($pemasukan);
