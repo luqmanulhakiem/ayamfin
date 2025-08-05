@@ -26,6 +26,7 @@ class KaryawanRequest extends FormRequest
             "position" => "string",
             "phone_number" => "string",
             "address" => "string",
+            "salary" => "string|required",
         ];
     }
 }

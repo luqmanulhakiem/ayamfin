@@ -21,6 +21,14 @@
                                 placeholder="Cth: Tenaga Lapangan">
                         </div>
                         <div class="form-group">
+                            <label for="name">Gaji Pokok<span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <div class="input-group-text">Rp.</div>
+                                <input id="name" name="salary" type="number" class="form-control"
+                                    placeholder="Masukkan gaji karyawan" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label for="name">Nomer HP</label>
                             <input id="name" name="phone_number" type="number" class="form-control"
                                 placeholder="Cth: 628XXZZZZYYYY">
