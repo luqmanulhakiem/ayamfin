@@ -9,12 +9,21 @@
                     {{-- <a href="{{ route('kategori.create') }}" class="btn btn-sm btn-primary">Tambah Kategori</a> --}}
 
                 </div>
+
+                <!-- Button trigger modal -->
+
+                <button type="button" class="btn btn-primary col-1 p-2 ms-3" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal">
+                    Filter
+                </button>
+
                 <div class="card-body px-0 pt-0 pb-2">
                     <div class="table-responsive p-0">
                         <table class="table align-items-center mb-0">
                             <thead>
                                 <tr>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama
+                                    </th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                         Tanggal</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
@@ -60,9 +69,10 @@
                                                 <div class="d-flex px-2 py-1">
                                                     <div class="d-flex flex-column justify-content-center">
                                                         <h6
-                                                            class="mb-0 text-sm {{ $item->kategori->type == 'pengeluaran' ? 'text-danger' : 'text-success' }}">
-                                                            {{ $item->kategori->type == 'pengeluaran' ? '- ' : '+ ' }}Rp.
-                                                            {{ $item->amount }}</h6>
+                                                            class="mb-0 text-sm d-flex {{ $item->kategori->type == 'pengeluaran' ? 'text-danger' : 'text-success' }}">
+                                                            {{ $item->kategori->type == 'pengeluaran' ? '- ' : '+ ' }}
+                                                            <x-currency-formatter amount="{{ $item->amount }}" />
+                                                        </h6>
                                                     </div>
                                                 </div>
                                             </td>
@@ -79,6 +89,31 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <form class="modal-content" action="{{ route('arus-kas') }}" method="GET">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-input mb-3">
+                        <label for="startDate">Tanggal Mulai</label>
+                        <input type="date" id="startDate" class="form-control" name="startDate" required>
+                    </div>
+                    <div class="form-input mb-3">
+                        <label for="endDate">Tanggal Akhir</label>
+                        <input type="date" id="endDate" class="form-control" name="endDate" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Filter</button>
+                </div>
+            </form>
         </div>
     </div>
 @endsection

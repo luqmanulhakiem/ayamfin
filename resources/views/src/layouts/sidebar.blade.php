@@ -119,8 +119,13 @@
                 </a>
             </li>
             <li class="nav-item">
+                @php
+                    $firstDate = \Carbon\Carbon::now()->startOfMonth()->toDateString();
+                    $lastDate = \Carbon\Carbon::now()->endOfMonth()->toDateString();
+                @endphp
+
                 <a class="nav-link  {{ Request::is('dashboard/laporan/arus-kas*') ? 'active' : '' }}"
-                    href="{{ route('arus-kas') }}">
+                    href="{{ route('arus-kas', ['startDate' => $firstDate, 'endDate' => $lastDate]) }}">
                     <div
                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="16px" height="16px" xmlns="http://www.w3.org/2000/svg"
@@ -131,6 +136,7 @@
                     </div>
                     <span class="nav-link-text ms-1">Arus Kas</span>
                 </a>
+
             </li>
             {{-- End of Laporan --}}
 

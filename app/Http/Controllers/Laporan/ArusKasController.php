@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Laporan;
 
 use App\Http\Controllers\Controller;
 use App\Models\Transaksi;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ArusKasController extends Controller
@@ -11,9 +12,21 @@ class ArusKasController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = Transaksi::with('kategori')->with('user')->get();
+        $startDate = $request->query('startDate');
+        $endDate = $request->query('endDate');
+
+        $data = Transaksi::with('kategori', 'user')
+            ->when($startDate && $endDate, function ($query) use ($startDate, $endDate) {
+                return $query->whereBetween('date_transaction', [
+                    Carbon::parse($startDate)->format('Y-m-d'),
+                    Carbon::parse($endDate)->format('Y-m-d')
+                ]);
+            })
+            ->orderBy('date_transaction', 'desc')
+            ->get();
+
         return view('src.pages.laporan.arus-kas', compact('data'));
     }
 
