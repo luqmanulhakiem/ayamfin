@@ -235,7 +235,7 @@
             Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
         }
     </script>
-    @stack('arusKasRangePicker')
+    @stack('scripts')
 
     {{-- Date Range Picker --}}
     <link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
