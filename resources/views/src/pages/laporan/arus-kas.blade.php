@@ -12,7 +12,7 @@
 
                 <!-- Button trigger modal -->
 
-                <button type="button" class="btn btn-primary col-1 p-2 ms-3" data-bs-toggle="modal"
+                <button type="button" class="btn btn-primary col-3 col-md-1 p-2 ms-3" data-bs-toggle="modal"
                     data-bs-target="#exampleModal">
                     Filter
                 </button>
