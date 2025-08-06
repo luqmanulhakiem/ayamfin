@@ -3,7 +3,7 @@
     <div class="container">
         <h1>Dashboard</h1>
         <div class="row">
-            <div class="col-8">
+            <div class="col-8 mb-4 d-none d-md-block">
                 <div class="card">
                     <div class="card-header">
                         Grafik Pemasukan vs Pengeluaran (Tahun {{ now()->year }})
