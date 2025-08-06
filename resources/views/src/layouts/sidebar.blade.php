@@ -70,7 +70,7 @@
                     <span class="nav-link-text ms-1">Pengeluaran</span>
                 </a>
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link  {{ Request::is('dashboard/pencatatan/aset*') ? 'active' : '' }}"
                     href="{{ route('kategori') }}">
                     <div
@@ -83,14 +83,14 @@
                     </div>
                     <span class="nav-link-text ms-1">Aset</span>
                 </a>
-            </li>
+            </li> --}}
             {{-- End of Pencatatan --}}
 
             {{-- Laporan --}}
             <li class="nav-item mt-3">
                 <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Laporan Keuangan</h6>
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link  {{ Request::is('dashboard/laporan/pemasukan-dan-pengeluaran*') ? 'active' : '' }}"
                     href="{{ route('kategori') }}">
                     <div
@@ -103,7 +103,7 @@
                     </div>
                     <span class="nav-link-text ms-1">Pemasukan & Pengeluaran</span>
                 </a>
-            </li>
+            </li> --}}
             <li class="nav-item">
                 <a class="nav-link  {{ Request::is('dashboard/laporan/laba-rugi*') ? 'active' : '' }}"
                     href="{{ route('laba-rugi', ['tahun' => \Carbon\Carbon::now()->year]) }}">
@@ -146,7 +146,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link  {{ Request::is('dashboard/management/aset*') ? 'active' : '' }}"
-                    href="{{ route('kategori') }}">
+                    href="{{ route('aset') }}">
                     <div
                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="16px" height="16px" xmlns="http://www.w3.org/2000/svg"

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AsetController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KaryawanController;
@@ -65,6 +66,17 @@ Route::group(['middleware' => ['auth']], function () {
                 Route::get("karyawan/edit/{karyawan}", 'edit')->name('karyawan.edit');
                 Route::post("karyawan/update/{karyawan}", 'update')->name('karyawan.update');
                 Route::delete("karyawan/destroy/{karyawan}", 'destroy')->name('karyawan.destroy');
+            });
+
+            // Aset Controller
+            Route::controller(AsetController::class)->group(function () {
+                // Halaman Index Aset
+                Route::get("aset", 'index')->name('aset');
+                Route::get("aset/tambah", 'create')->name('aset.create');
+                Route::post("aset/store", 'store')->name('aset.store');
+                Route::get("aset/edit/{aset}", 'edit')->name('aset.edit');
+                Route::post("aset/update/{aset}", 'update')->name('aset.update');
+                Route::delete("aset/destroy/{aset}", 'destroy')->name('aset.destroy');
             });
         });
 
