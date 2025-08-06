@@ -6,7 +6,8 @@
             <div class="card mb-4">
                 <div class="card-header pb-0 d-flex flex-column flex-md-row justify-content-md-between align-items-center">
                     <h6>Arus Kas</h6>
-                    {{-- <a href="{{ route('kategori.create') }}" class="btn btn-sm btn-primary">Tambah Kategori</a> --}}
+                    <a href="{{ route('arus-kas.export', ['startDate' => $startDate, 'endDate' => $endDate]) }}"
+                        class="btn btn-sm btn-primary">Download</a>
 
                 </div>
 

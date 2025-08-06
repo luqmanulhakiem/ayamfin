@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Laporan;
 
+use App\Exports\ArusKasExport;
 use App\Http\Controllers\Controller;
 use App\Models\Transaksi;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ArusKasController extends Controller
 {
@@ -27,7 +29,17 @@ class ArusKasController extends Controller
             ->orderBy('date_transaction', 'desc')
             ->get();
 
-        return view('src.pages.laporan.arus-kas', compact('data'));
+        return view('src.pages.laporan.arus-kas', compact('data', 'startDate', 'endDate'));
+    }
+
+    public function exportArusKas(Request $request)
+    {
+        $startDate = $request->query('startDate');
+        $endDate = $request->query('endDate');
+
+        // Memanggil kelas export dengan parameter tahun
+        return Excel::download(new ArusKasExport($startDate, $endDate), 'laporan-arus-kas-' . $startDate . '_' . $endDate . '.xlsx');
+        // return $excel->download(new ArusKasExport($startDate, $endDate), 'laporan-arus-kas-' . $startDate . '_' . $endDate . '.xlsx');
     }
 
     /**

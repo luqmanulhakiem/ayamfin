@@ -1,5 +1,6 @@
 <?php
 
+use App\Exports\ArusKasExport;
 use App\Http\Controllers\AsetController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
@@ -99,7 +100,9 @@ Route::group(['middleware' => ['auth']], function () {
 
         Route::prefix('laporan')->group(function () {
             Route::get("arus-kas", [ArusKasController::class, 'index'])->name('arus-kas');
+            Route::get('arus-kas/export', [ArusKasController::class, 'exportArusKas'])->name('arus-kas.export');
             Route::get("laba-rugi", [LabaRugiController::class, 'index'])->name('laba-rugi');
+            Route::get('laba-rugi/export', [LabaRugiController::class, 'exportLabaRugi'])->name('laba-rugi.export');
         });
     });
 });

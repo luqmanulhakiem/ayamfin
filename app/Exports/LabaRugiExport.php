@@ -1,24 +1,27 @@
 <?php
 
-namespace App\Http\Controllers\Laporan;
+namespace App\Exports;
 
-use App\Exports\LabaRugiExport;
-use App\Http\Controllers\Controller;
+use App\Models\Transaksi;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\DB;
-use Maatwebsite\Excel\Facades\Excel;
+use Maatwebsite\Excel\Concerns\FromView;
 
-class LabaRugiController extends Controller
+class LabaRugiExport implements FromView
 {
+    protected $year;
+
+    public function __construct(int $year)
+    {
+        $this->year = $year;
+    }
     /**
-     * Display a listing of the resource.
+     * @return \Illuminate\Support\View
      */
-    public function index(Request $request)
+    public function view(): View
     {
         Carbon::setLocale('id');
-        // Ambil tahun ini
-        $year = $request->query('tahun');
 
         // Array untuk menyimpan laporan per bulan
         $monthlySummary = [];
@@ -27,8 +30,8 @@ class LabaRugiController extends Controller
         // Loop dari Januari hingga Desember
         for ($month = 1; $month <= 12; $month++) {
             // Ambil start dan end date untuk bulan tersebut
-            $startOfMonth = Carbon::createFromDate($year, $month, 1)->startOfMonth();
-            $endOfMonth = Carbon::createFromDate($year, $month, 1)->endOfMonth();
+            $startOfMonth = Carbon::createFromDate($this->year, $month, 1)->startOfMonth();
+            $endOfMonth = Carbon::createFromDate($this->year, $month, 1)->endOfMonth();
 
             // Format nama bulan
             $monthName = $startOfMonth->isoFormat('MMMM YYYY');
@@ -64,21 +67,10 @@ class LabaRugiController extends Controller
                 'keuntungan' => number_format($keuntungan, 0, ',', '.')
             ];
         }
-
-        // Mengirim data ke view
-        return view('src.pages.laporan.laba-rugi', [
+        return view('exports.laba-rugi-export', [
             'keuntunganBulanan' => $monthlySummary,
-            'tahun' => $year,
-            'totalKeuntungan' => number_format($totalKeuntungan, 0, ',', '.')
+            'year' => $this->year,
+            'totalKeuntungan' => number_format($totalKeuntungan, 0, ',', '.'),
         ]);
-    }
-
-    public function exportLabaRugi(Request $request)
-    {
-        // Ambil tahun dari request, default ke tahun saat ini jika tidak ada
-        $year = $request->query('tahun', now()->year);
-
-        // Memanggil kelas export dengan parameter tahun
-        return Excel::download(new LabaRugiExport($year), 'laporan-laba-rugi-' . $year . '.xlsx');
     }
 }

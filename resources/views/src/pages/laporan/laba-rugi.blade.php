@@ -6,7 +6,7 @@
             <div class="card mb-4">
                 <div class="card-header pb-0 d-flex flex-column flex-md-row justify-content-md-between align-items-center">
                     <h6>Laba Rugi</h6>
-                    {{-- <a href="{{ route('kategori.create') }}" class="btn btn-sm btn-primary">Tambah Kategori</a> --}}
+                    <a href="{{ route('laba-rugi.export') }}" class="btn btn-sm btn-primary">Download</a>
 
                 </div>
 
