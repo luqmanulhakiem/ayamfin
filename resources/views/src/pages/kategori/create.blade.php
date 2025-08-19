@@ -17,9 +17,9 @@
                         </div>
                         <div class="form-group">
                             <label for="type">Tipe Kategori<span class="text-danger">*</span> </label>
-                            <select class="form-control" name="type" id="type" required>
+                            <select class="form-control" name="type" id="type" disabled>
                                 <option value="">Pilih Tipe</option>
-                                <option value="pengeluaran">Pengeluaran</option>
+                                <option value="pengeluaran" selected>Pengeluaran</option>
                                 <option value="pemasukan">Pemasukan</option>
                             </select>
                         </div>

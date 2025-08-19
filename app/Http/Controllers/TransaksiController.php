@@ -37,7 +37,6 @@ class TransaksiController extends Controller
         Transaksi::create([
             'user_id' => Auth::user()->id,
             'category_id' => $form['category_id'],
-            // 'karyawan_id' =>   $type != "pemasukan" ? $form['karyawan_id'] :  null,
             'amount' => $form['amount'],
             'date_transaction' => Carbon::now(),
         ]);
