@@ -62,8 +62,7 @@ class TransaksiController extends Controller
      */
     public function pemasukan()
     {
-        $category = Kategori::where('type', 'pemasukan')->where('type_pengeluaran', null)->where('status', 'active')->get();
-        return view('src.pages.transaksi.pemasukan', compact('category'));
+        return view('src.pages.transaksi.pemasukan');
     }
 
     public function pengeluaran()
