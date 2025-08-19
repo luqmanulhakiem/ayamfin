@@ -9,12 +9,30 @@
                     <a href="{{ route('karyawan.create') }}" class="btn btn-sm btn-primary">Tambah Karyawan</a>
 
                 </div>
+                <div class="card-body">
+                    <div class="col-lg-4 col-md-5 col-12">
+                        <div class="card">
+                            <span class="mask bg-primary opacity-10 border-radius-lg"></span>
+                            <div class="card-body p-3 position-relative">
+                                <div class="row">
+                                    <div class="col-8 text-start">
+                                        <h5 class="text-white font-weight-bolder mb-0 mt-3">
+                                            <x-currency-formatter amount="{{ $gaji }}" />
+                                        </h5>
+                                        <span class="text-white text-sm">Total Gaji Perbulan</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="card-body px-0 pt-0 pb-2">
                     <div class="table-responsive p-0">
                         <table class="table align-items-center mb-0">
                             <thead>
                                 <tr>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama
+                                    </th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Gaji
                                     </th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">

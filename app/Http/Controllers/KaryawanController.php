@@ -13,11 +13,12 @@ class KaryawanController extends Controller
      */
     public function index()
     {
+        $gaji = Karyawan::sum('salary');
         $title = 'Delete Karyawan!';
         $text = "Are you sure you want to delete?";
         confirmDelete($title, $text);
         $data = Karyawan::get();
-        return view('src.pages.karyawan.index', compact('data'));
+        return view('src.pages.karyawan.index', compact('data', 'gaji'));
     }
 
     /**

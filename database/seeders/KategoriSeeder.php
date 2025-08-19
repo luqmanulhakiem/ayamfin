@@ -15,7 +15,6 @@ class KategoriSeeder extends Seeder
     {
         $pemasukan = [
             ["name" => "Penjualan Ayam", "type" => "pemasukan"],
-            ["name" => "Lain-lain Pemasukan", "type" => "pemasukan"],
         ];
         $pengeluaran = [
             ["name" => "Pembelian DOC", "type" => "pengeluaran", "type_pengeluaran" => "hpp"],

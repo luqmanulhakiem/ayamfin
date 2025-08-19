@@ -12,13 +12,10 @@
                         @csrf
                         <div class="form-group">
                             <label for="name">Kategori<span class="text-danger">*</span> </label>
-                            <select name="category_id" class="form-control" id="" required>
-                                <option value="">Pilih Kategori</option>
-                                @foreach ($category as $item)
-                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
-                                @endforeach
-
+                            <select name="" class="form-control" id="" disabled>
+                                <option value="1">Penjualan Ayam</option>
                             </select>
+                            <input type="text" name="category_id" value="1" hidden>
                         </div>
 
                         <div class="form-group">
