@@ -11,7 +11,7 @@
                     <form action="{{ route('pencatatan.store', ['type' => 'pemasukan']) }}" method="POST" id="categoryForm">
                         @csrf
                         <div class="form-group">
-                            <label for="name">Kategori<span class="text-danger">*</span> </label>
+                            {{-- <label for="name">Pemasukan<span class="text-danger">*</span> </label> --}}
                             <select name="" class="form-control" id="" disabled>
                                 <option value="1">Penjualan Ayam</option>
                             </select>

@@ -18,6 +18,11 @@ class ArusKasController extends Controller
     {
         $startDate = $request->query('startDate');
         $endDate = $request->query('endDate');
+        $debitSaatIni = 0;
+        $kreditSaatIni = 0;
+        $saldoSaatIni = 0;
+
+
 
         $data = Transaksi::with('kategori', 'user')
             ->when($startDate && $endDate, function ($query) use ($startDate, $endDate) {
@@ -29,7 +34,19 @@ class ArusKasController extends Controller
             ->orderBy('date_transaction', 'desc')
             ->get();
 
-        return view('src.pages.laporan.arus-kas', compact('data', 'startDate', 'endDate'));
+        foreach ($data as $item) {
+            if ($item->kategori->type == "pemasukan") {
+                $debit = $item->amount;
+                $debitSaatIni += $debit;
+                $saldoSaatIni += $debit;
+            } else {
+                $kredit = $item->amount;
+                $kreditSaatIni += $kredit;
+                $saldoSaatIni -= $kredit;
+            }
+        }
+
+        return view('src.pages.laporan.arus-kas', compact('data', 'startDate', 'endDate', 'kreditSaatIni', 'debitSaatIni', 'saldoSaatIni'));
     }
 
     public function exportArusKas(Request $request)

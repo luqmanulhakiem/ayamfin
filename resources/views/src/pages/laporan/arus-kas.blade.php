@@ -18,6 +18,61 @@
                     Filter
                 </button>
 
+                <div class="row">
+                    <div class="col-4">
+                        <div class="card-body">
+                            <div class="card">
+                                <span class="mask bg-primary opacity-10 border-radius-lg"></span>
+                                <div class="card-body p-3 position-relative">
+                                    <div class="row">
+                                        <div class="col-8 text-start">
+                                            <h5 class="text-white font-weight-bolder mb-0 mt-3">
+                                                <x-currency-formatter amount="{{ $saldoSaatIni }}" />
+                                            </h5>
+                                            <span class="text-white text-sm">Total Saldo</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="card-body">
+                            <div class="card">
+                                <span class="mask bg-primary opacity-10 border-radius-lg"></span>
+                                <div class="card-body p-3 position-relative">
+                                    <div class="row">
+                                        <div class="col-8 text-start">
+                                            <h5 class="text-white font-weight-bolder mb-0 mt-3">
+                                                <x-currency-formatter amount="{{ $kreditSaatIni }}" />
+                                            </h5>
+                                            <span class="text-white text-sm">Total Kredit</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="card-body">
+                            <div class="card">
+                                <span class="mask bg-primary opacity-10 border-radius-lg"></span>
+                                <div class="card-body p-3 position-relative">
+                                    <div class="row">
+                                        <div class="col-8 text-start">
+                                            <h5 class="text-white font-weight-bolder mb-0 mt-3">
+                                                <x-currency-formatter amount="{{ $debitSaatIni }}" />
+                                            </h5>
+                                            <span class="text-white text-sm">Total Debit</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
                 <div class="card-body px-0 pt-0 pb-2">
                     <div class="table-responsive p-0">
                         <table class="table align-items-center mb-0">
