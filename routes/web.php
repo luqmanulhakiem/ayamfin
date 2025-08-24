@@ -8,6 +8,7 @@ use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\Laporan\ArusKasController;
 use App\Http\Controllers\Laporan\LabaRugiController;
+use App\Http\Controllers\Laporan\NeracaController;
 use App\Http\Controllers\TransaksiController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -100,6 +101,8 @@ Route::group(['middleware' => ['auth']], function () {
 
         Route::prefix('laporan')->group(function () {
             Route::get("arus-kas", [ArusKasController::class, 'index'])->name('arus-kas');
+            Route::get("neraca", [NeracaController::class, 'index'])->name('neraca');
+            Route::get("neraca/export", [NeracaController::class, 'export'])->name('neraca.export');
             Route::get('arus-kas/export', [ArusKasController::class, 'exportArusKas'])->name('arus-kas.export');
             Route::get("laba-rugi", [LabaRugiController::class, 'index'])->name('laba-rugi');
             Route::get('laba-rugi/export', [LabaRugiController::class, 'exportLabaRugi'])->name('laba-rugi.export');

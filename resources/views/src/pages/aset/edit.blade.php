@@ -21,6 +21,11 @@
                                 placeholder="Cth: Kandang, Kendaraan" value="{{ $aset->asset_type }}" required>
                         </div>
                         <div class="form-group">
+                            <label for="name">Asal Aset<span class="text-danger">*</span></label>
+                            <input id="name" name="asset_origin" value="{{ $aset->asset_origin }}" type="text"
+                                class="form-control" placeholder="Cth: Modal Pribadi / Hutang Bank" required>
+                        </div>
+                        <div class="form-group">
                             <label for="name">Tanggal Akuisisi<span class="text-danger">*</span></label>
                             <input id="name" name="acquisition_date" type="date"
                                 value="{{ \Carbon\Carbon::parse($aset->acquisition_date)->format('Y-m-d') }}"

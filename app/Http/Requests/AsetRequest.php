@@ -27,6 +27,7 @@ class AsetRequest extends FormRequest
             "asset_name" => "string|required",
             "acquisition_date" => "required",
             "acquisition_cost" => "required",
+            "asset_origin" => "required",
             "estimated_useful_life_years" => "required",
             "description" => "string",
         ];

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('asset_name');
             $table->datetime('acquisition_date');
             $table->string('acquisition_cost');
+            $table->string('asset_origin');
             $table->string('estimated_useful_life_years');
             $table->string('description')->nullable();
             $table->timestamps();
