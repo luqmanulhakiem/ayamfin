@@ -16,6 +16,7 @@
                 <th>Nama</th>
                 <th>Tanggal</th>
                 <th>Kategori</th>
+                <th>Kuantitas</th>
                 <th>Total</th>
             </tr>
         </thead>
@@ -30,6 +31,11 @@
                     </td>
                     <td>
                         <p class="text-sm"> {{ ucwords($item->kategori->type) }}</p>
+                    </td>
+                    <td>
+                        <p class="text-sm">
+                            {{ $item->quantity == null ? '' : $item->quantity . ' ' . $item->quantity_unit }}
+                        </p>
                     </td>
                     <td>
                         {{ $item->kategori->type == 'pengeluaran' ? '- ' : '+ ' }}Rp.

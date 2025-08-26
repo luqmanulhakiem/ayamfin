@@ -32,6 +32,25 @@
 
                         </div>
 
+                        <div class="form-group">
+                            <label for="name">Kuantitas</label>
+                            <div class="input-group">
+                                <input id="name" name="quantity" type="number" class="form-control"
+                                    placeholder="Cth: 100">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="name">Satuan</label>
+                            <div class="input-group">
+                                <select name="quantity_unit" id="quantity_unit" class="form-control">
+                                    <option value="">Pilih Satuan</option>
+                                    <option value="Kg">Kg</option>
+                                    <option value="Ekor">Ekor</option>
+                                </select>
+                            </div>
+                        </div>
+
                         <button type="submit" class="btn btn-sm btn-primary">Simpan</button>
                     </form>
                 </div>

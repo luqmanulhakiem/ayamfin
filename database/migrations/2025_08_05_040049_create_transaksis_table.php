@@ -17,6 +17,8 @@ return new class extends Migration
             $table->foreignId('category_id')->constrained('kategoris')->onDelete('cascade');
             $table->dateTime('date_transaction');
             $table->string('amount');
+            $table->string('quantity')->nullable();
+            $table->string('quantity_unit')->nullable();
             $table->timestamps();
         });
     }

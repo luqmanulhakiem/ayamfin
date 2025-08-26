@@ -25,6 +25,8 @@ class TransaksiRequest extends FormRequest
             "category_id" => "string|required",
             "karyawan_id" => "string",
             "amount" => "integer|required",
+            "quantity" => "integer",
+            "quantity_unit" => "string",
         ];
     }
 }

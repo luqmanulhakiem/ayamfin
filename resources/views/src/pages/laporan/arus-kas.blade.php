@@ -85,6 +85,8 @@
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                         Kategori</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                        Kuantitas</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                         Total</th>
                                 </tr>
                             </thead>
@@ -118,6 +120,15 @@
                                                     <div class="d-flex flex-column justify-content-center">
                                                         <p class="mb-0 badge bg-secondary" style="font-size: 12px;">
                                                             {{ ucwords($item->kategori->type) }}</p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex px-2 py-1">
+                                                    <div class="d-flex flex-column justify-content-center">
+                                                        <p class="mb-0">
+                                                            {{ $item->quantity == null ? '-' : $item->quantity . ' ' . $item->quantity_unit }}
+                                                        </p>
                                                     </div>
                                                 </div>
                                             </td>

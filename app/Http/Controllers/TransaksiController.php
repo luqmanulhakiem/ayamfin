@@ -39,6 +39,8 @@ class TransaksiController extends Controller
             'category_id' => $form['category_id'],
             'amount' => $form['amount'],
             'date_transaction' => Carbon::now(),
+            'quantity' => $form['quantity'],
+            'quantity_unit' => $form['quantity_unit'],
         ]);
 
         if ($type != "pemasukan") {
