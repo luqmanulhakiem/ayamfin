@@ -13,6 +13,28 @@
     <table>
         <thead>
             <tr>
+                <th>Total Saldo</th>
+                <td>
+                    Rp. {{ number_format($saldoSaatIni, 0, ',', '.') }}
+                </td>
+            </tr>
+            <tr>
+                <th>Total Kredit</th>
+                <td>
+                    Rp. {{ number_format($kreditSaatIni, 0, ',', '.') }}
+                </td>
+            </tr>
+            <tr>
+                <th>Total Debit</th>
+                <td>
+                    Rp. {{ number_format($debitSaatIni, 0, ',', '.') }}
+                </td>
+            </tr>
+        </thead>
+    </table>
+    <table>
+        <thead>
+            <tr>
                 <th>Nama</th>
                 <th>Tanggal</th>
                 <th>Kategori</th>

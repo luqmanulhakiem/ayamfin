@@ -25,6 +25,9 @@ class ArusKasExport implements FromView
     {
         $startDate = $this->startDate;;
         $endDate = $this->endDate;
+        $debitSaatIni = 0;
+        $kreditSaatIni = 0;
+        $saldoSaatIni = 0;
 
         $data = Transaksi::with('kategori', 'user')
             ->when($startDate && $endDate, function ($query) use ($startDate, $endDate) {
@@ -36,6 +39,18 @@ class ArusKasExport implements FromView
             ->orderBy('date_transaction', 'desc')
             ->get();
 
-        return view('exports.arus-kas-export', compact('data'));
+        foreach ($data as $item) {
+            if ($item->kategori->type == "pemasukan") {
+                $debit = $item->amount;
+                $debitSaatIni += $debit;
+                $saldoSaatIni += $debit;
+            } else {
+                $kredit = $item->amount;
+                $kreditSaatIni += $kredit;
+                $saldoSaatIni -= $kredit;
+            }
+        }
+
+        return view('exports.arus-kas-export', compact('data', 'kreditSaatIni', 'debitSaatIni', 'saldoSaatIni'));
     }
 }
